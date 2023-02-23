@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 15:52:34 by shamizi           #+#    #+#             */
-/*   Updated: 2023/02/17 13:11:46 by shamizi          ###   ########.fr       */
+/*   Updated: 2023/02/20 14:43:06 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,18 @@ namespace ft {
 			protected:
 				Container c;
 			public:
-				explicit stack(const Container& = Container())
-				{
-					std::cout << "stack constructor called" << std::endl;
-				}
-				stack& operator= (const stack& other){c = other.c;}
-				~stack() {}
+				explicit stack(const Container& ctnr = Container()) : c(ctnr) {};
+				
+			//	stack& operator= (const stack& other){c = other.c;}
+				
+				~stack() {};
 
-				bool empty() const { return c.empty(); }
-				size_type size() const { return c.size(); }
-				value_type& top() { return c.back(); }
-				const value_type& top() const { return c.back(); }
-				void push(const value_type& x) { c.push_back(x); }
-				void pop() { c.pop_back(); }
+				bool empty() const { return c.empty(); }; //
+				size_type size() const { return c.size(); }; //
+				value_type& top() { return c.back(); }; //
+				const value_type& top() const { return c.back(); };
+				void push(const value_type& x) { c.push_back(x); };
+				void pop() { c.pop_back(); };
 
 
 				template <class U, class V>
