@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 18:40:24 by shamizi           #+#    #+#             */
-/*   Updated: 2023/02/27 16:46:11 by shamizi          ###   ########.fr       */
+/*   Updated: 2023/03/09 19:42:36 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int main(void)
 	// 	first.pop();
 	// 	std::cout << "un element supprimer\n";
 	// }
-
+/*
 	std::cout << "---------------------test des reverse_iterator----------------\n";
 	std::vector<int> myvec;
 	for (int i = 0; i < 10; i++)
@@ -90,7 +90,7 @@ int main(void)
 	while (rev_finale != rev_origin)
 		std::cout << ' ' << *rev_origin++;
 	std::cout << '\n';
-
+*/
 	std::cout << "--------------test vector--------------\n";
 	ft::vector<int> first;
 	first.push_back(100);
@@ -98,7 +98,7 @@ int main(void)
 	first.push_back(300);
 	first.push_back(400);
 	ft::vector<int> second;
-	ft::vector<int> third(first.begin(), first.end());
+	ft::vector<int> third(first.begin(), first.end()); //remettre first.begin()
 	ft::vector<int> fourth(third);
 
 	std::vector<int> test;
@@ -133,6 +133,30 @@ int main(void)
 	std::cout << "fonction \"\"       4: " << fourth[2] << std::endl;
 	std::cout << std::endl << std::endl;
 
+	std::cout << "-----fct reserve avec valeur 1000------\n";
+
+	first.reserve(1000);
+	second.reserve(2000);
+	third.reserve(3000);
+	fourth.reserve(4000);
+	std::cout << "fonction capacity 1: " << first.capacity() << std::endl;
+	std::cout << "fonction \"\"       2: " << second.capacity() << std::endl;
+	std::cout << "fonction \"\"       3: " << third.capacity() << std::endl;
+	std::cout << "fonction \"\"       4: " << fourth.capacity() << std::endl;
+	std::cout << std::endl << std::endl;
+
+
+	std::cout << "-----fct resize avec valeur 1*i------\n";
+
+	first.resize(1);
+	second.resize(2000);
+	third.resize(3000);
+	fourth.resize(4000);
+	std::cout << "fonction capacity 1: " << first.size() << std::endl;
+	std::cout << "fonction \"\"       2: " << second.size() << std::endl;
+	std::cout << "fonction \"\"       3: " << third.size() << std::endl;
+	std::cout << "fonction \"\"       4: " << fourth.size() << std::endl;
+	std::cout << std::endl << std::endl;
 
 
 	//si je pop back un element vide j'ai une boucle infini au moment du destructeur, apres j'ai la bonen valeur de size comme le vrai // donc a voir si c'est normal ou pas
@@ -169,8 +193,48 @@ int main(void)
 	for(ite = first.begin(); ite < first.end(); ite++)
 		std::cout << ' ' << *ite;
 	std::cout << std::endl;
-
 	std::cout << std::endl << std::endl;
+
+	std::cout << "------test at----------\n";
+	std::cout << "first a position qui existe : " << first.at(2) << std::endl;
+	try
+	{
+		std::cout << "second a position qui existe pas : " << second.at(999999999999999999) << std::endl;
+	}
+	catch (std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << std::endl << std::endl;
+
+	std::cout << "------front-----------\n";
+	std::cout << "fonction front 1: " << first.front() << std::endl;
+	std::cout << "fonction \"\"       2: " << second.front() << std::endl;
+	std::cout << "fonction \"\"       3: " << third.front() << std::endl;
+	std::cout << "fonction \"\"       4: " << fourth.front() << std::endl;
+	std::cout << std::endl << std::endl;
+
+	std::cout << "------back-----------\n";
+	std::cout << "fonction back 1: " << first.back() << std::endl;
+	std::cout << "fonction \"\"       2: " << second.back() << std::endl;
+	std::cout << "fonction \"\"       3: " << third.back() << std::endl;
+	std::cout << "fonction \"\"       4: " << fourth.back() << std::endl;
+	std::cout << std::endl << std::endl;
+
+	std::cout << "----------------------pb de copie --------------------\n";
+	ft::vector<int> cp;
+	for (size_t i = 0; i < 3; i++)
+		cp.push_back(i);
+	std::cout << "le mien capacite :" << cp.capacity() << std::endl;
+	ft::vector<int> copy(cp);
+	std::cout << "le mien capacite :" << copy.capacity() << std::endl;
+
+	std::vector<int> cp2;
+	for (size_t i = 0; i < 3; i++)
+		cp2.push_back(i);
+	std::cout << "le vrai capacite :" << cp2.capacity() << std::endl;
+	std::vector<int> copy2(cp2);
+	std::cout << "le vrai capacite :" << copy2.capacity() << std::endl;
 
 
 

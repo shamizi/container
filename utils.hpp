@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 17:37:16 by shamizi           #+#    #+#             */
-/*   Updated: 2023/02/26 18:39:12 by shamizi          ###   ########.fr       */
+/*   Updated: 2023/03/09 14:35:20 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ namespace ft {
 
 	template <> struct is_integral<bool> {static const bool value = true;};
 	template <> struct is_integral<char> {static const bool value = true;};
-	template <> struct is_integral<char16_t> {static const bool value = true;};
-	template <> struct is_integral<char32_t> {static const bool value = true;};
+//	template <> struct is_integral<char16_t> {static const bool value = true;};
+//	template <> struct is_integral<char32_t> {static const bool value = true;};
 	template <> struct is_integral<wchar_t> {static const bool value = true;};
 	template <> struct is_integral<signed char> {static const bool value = true;};
 	template <> struct is_integral<short int> {static const bool value = true;};
@@ -119,7 +119,7 @@ namespace ft {
 			pair& operator=(const pair& pr)
 			{
 				if (this == &pr)
-					returnn *this;
+					return *this;
 				first = pr.first;
 				second = pr.second;
 				return *this;
